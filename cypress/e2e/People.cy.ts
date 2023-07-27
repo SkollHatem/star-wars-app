@@ -7,12 +7,6 @@ describe("template spec", () => {
     cy.get("#logo").click();
     cy.wait(20000);
     cy.contains("people").click();
-    // cy.scrollTo(0, 1000);
-    cy.get("#next").click();
-    // cy.scrollTo(0, 0);
-    cy.wait(20000);
-    cy.get("#prev").click();
-    // cy.scrollTo(0, 0);
     cy.get("#people-1").click();
   });
 });
