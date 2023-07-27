@@ -1,0 +1,28 @@
+name: Testing
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  cypress:
+    name: Cypress
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Make Env File
+        uses: DeveloperRic/action-create-env@v1.0.2 # set this to the version of your choice
+        with:
+          include_env_vars: true
+          full_text: |
+            NEXT_PUBLIC_API_STAGE=LOCAL
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v3
+        with:
+          build: npm run build
+          start: npm run start
+          wait-on: http://localhost:3000
